@@ -28,9 +28,11 @@ const typeDefs = gql`
         author: Author!
         thumbnail: String
         numberOfViews: Int
-        length: Int
+        length: Int @deprecated(reason: "Use durationInSeconds")
         modulesCount: Int
         modules: [Module!]!
+        "The track's full duration, in seconds"
+        durationInSeconds: Int
     }
 
     type Author {
@@ -42,7 +44,9 @@ const typeDefs = gql`
     type Module {
         id: ID!
         title: String!
-        length: Int
+        length: Int @deprecated(reason: "Use durationInSeconds")
+        "The module's video duration, in seconds"
+        durationInSeconds: Int
     }
 `;
 
